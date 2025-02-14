@@ -1,0 +1,38 @@
+{
+  "name": "@anthony-bonta-gaf-energy/fluent-sample-common",
+  "version": "1.0.0",
+  "description": "A library of shared, agnostic helpers.  Should eventually live in project helix.",
+  "author": "Anthony Bonta",
+  "license": "SEE LICENSE IN LICENSE",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anthony-bonta-gaf-energy/gafe-fluent-fe",
+    "directory": "packages/fluent-sample-common"
+  },
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "exports": {
+    "types": "./dist/types/index.d.ts",
+    "require": "./dist/index.cjs",
+    "import": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "vite build"
+  },
+  "dependencies": {
+    "lodash-es": "^4.17.21"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2",
+    "vite": "^5.4.11",
+    "vitest": "^2.1.8",
+    "vitest-mock-extended": "^2.0.2"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false
+}
