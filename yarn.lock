@@ -25,6 +25,7 @@ __metadata:
     "@nestjs/platform-express": "npm:^11.0.9"
     "@nestjs/swagger": "npm:^11.0.3"
     "@nestjs/testing": "npm:^11.0.9"
+    dotenv: "npm:^16.4.7"
     helmet: "npm:^8.0.0"
     lodash-es: "npm:^4.17.21"
     reflect-metadata: "npm:^0.2.2"
@@ -3402,7 +3403,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:^16.4.5, dotenv@npm:~16.4.5":
+"dotenv@npm:^16.4.5, dotenv@npm:^16.4.7, dotenv@npm:~16.4.5":
   version: 16.4.7
   resolution: "dotenv@npm:16.4.7"
   checksum: 10/f13bfe97db88f0df4ec505eeffb8925ec51f2d56a3d0b6d916964d8b4af494e6fb1633ba5d09089b552e77ab2a25de58d70259b2c5ed45ec148221835fc99a0c
