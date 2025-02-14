@@ -43,6 +43,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@anthony-bonta-gaf-energy/fluent-sample-common@workspace:packages/fluent-sample-common"
   dependencies:
+    axios: "npm:^1.7.9"
     lodash-es: "npm:^4.17.21"
     msw: "npm:^2.7.0"
     typescript: "npm:^5.7.3"
@@ -2439,7 +2440,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.7.4":
+"axios@npm:^1.7.4, axios@npm:^1.7.9":
   version: 1.7.9
   resolution: "axios@npm:1.7.9"
   dependencies:
