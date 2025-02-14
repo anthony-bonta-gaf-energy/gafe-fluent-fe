@@ -3,7 +3,11 @@
   "compilerOptions": {
     "baseUrl": "packages",
     "target": "esnext",
-    "paths": {}
+    "paths": {
+      "@anthony-bonta-gaf-energy/fluent-sample-common": [
+        "fluent-sample-common/src/index"
+      ]
+    }
   },
   "include": ["**/*.ts", "**/*.tsx", "**/*.mts"],
   "exclude": ["**/node_modules/**"]
