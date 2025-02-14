@@ -1,9 +1,9 @@
 import { get } from "lodash";
 
-import { firstDefined } from "../utils/first/first";
-import { HttpMethod, HttpRequest } from "./http-request";
-import { HttpResponse, HttpResponseBuilder } from "./http-response";
-import { HttpService } from "./http-service";
+import { firstDefined } from "../utils/first/first.mjs";
+import { HttpMethod, HttpRequest } from "./http-request.mjs";
+import { HttpResponse, HttpResponseBuilder } from "./http-response.mjs";
+import { HttpService } from "./http-service.mjs";
 
 type HttpResponseFactory = (
   req: HttpRequest,

@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { HttpRequestBuilder } from "./http-request";
-import { HttpResponseBuilder } from "./http-response";
-import { HttpServiceMemory } from "./http-service-memory";
+import { HttpRequestBuilder } from "./http-request.mjs";
+import { HttpResponseBuilder } from "./http-response.mjs";
+import { HttpServiceMemory } from "./http-service-memory.mjs";
 
 describe("HttpServiceMemory", () => {
   const createService = () => new HttpServiceMemory();

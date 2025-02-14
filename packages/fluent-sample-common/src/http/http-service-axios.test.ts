@@ -4,8 +4,8 @@ import { http, HttpResponse } from "msw";
 import { setupServer, SetupServerApi } from "msw/node";
 import { v4 } from "uuid";
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
-import { HttpRequestBuilder } from "./http-request";
-import { createDefaultHttpService } from "./http-service-axios";
+import { HttpRequestBuilder } from "./http-request.mjs";
+import { createDefaultHttpService } from "./http-service-axios.mjs";
 
 describe("HttpServiceAxios", () => {
   const domain = "https://mock.gaf.energy";

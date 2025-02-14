@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { firstDefined, firstTruthy } from "./first";
+import { firstDefined, firstTruthy } from "./first.mjs";
 
 describe("First", () => {
   describe("Truthy", () => {

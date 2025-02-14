@@ -1,9 +1,9 @@
 import axios, { AxiosInstance } from "axios";
 
-import { firstDefined } from "../utils/first/first";
-import { HttpRequest } from "./http-request";
-import { HttpResponse, HttpResponseBuilder } from "./http-response";
-import { HttpService } from "./http-service";
+import { firstDefined } from "../utils/first/first.mjs";
+import { HttpRequest } from "./http-request.mjs";
+import { HttpResponse, HttpResponseBuilder } from "./http-response.mjs";
+import { HttpService } from "./http-service.mjs";
 
 export class HttpServiceAxios implements HttpService {
   public constructor(private $axios: AxiosInstance) {}
