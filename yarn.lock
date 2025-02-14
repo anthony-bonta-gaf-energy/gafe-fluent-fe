@@ -19,6 +19,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@anthony-bonta-gaf-energy/fluent-sample-api@workspace:packages/fluent-sample-api"
   dependencies:
+    "@anthony-bonta-gaf-energy/fluent-sample-common": "npm:^1.0.0"
     "@nestjs/common": "npm:^11.0.9"
     "@nestjs/core": "npm:^11.0.9"
     "@nestjs/platform-express": "npm:^11.0.9"
@@ -38,7 +39,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@anthony-bonta-gaf-energy/fluent-sample-common@workspace:packages/fluent-sample-common":
+"@anthony-bonta-gaf-energy/fluent-sample-common@npm:^1.0.0, @anthony-bonta-gaf-energy/fluent-sample-common@workspace:packages/fluent-sample-common":
   version: 0.0.0-use.local
   resolution: "@anthony-bonta-gaf-energy/fluent-sample-common@workspace:packages/fluent-sample-common"
   dependencies:
