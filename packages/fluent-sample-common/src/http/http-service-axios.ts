@@ -1,9 +1,9 @@
-import axios, { AxiosInstance } from 'axios';
+import axios, { AxiosInstance } from "axios";
 
-import { firstDefined } from '../../utils/first/first';
-import { HttpRequest } from './http-request';
-import { HttpResponse, HttpResponseBuilder } from './http-response';
-import { HttpService } from './http-service';
+import { firstDefined } from "../utils/first/first";
+import { HttpRequest } from "./http-request";
+import { HttpResponse, HttpResponseBuilder } from "./http-response";
+import { HttpService } from "./http-service";
 
 export class HttpServiceAxios implements HttpService {
   public constructor(private $axios: AxiosInstance) {}
@@ -18,7 +18,10 @@ export class HttpServiceAxios implements HttpService {
         params: request.params,
       });
 
-      return new HttpResponseBuilder<T>().data(response.data).status(response.status).build();
+      return new HttpResponseBuilder<T>()
+        .data(response.data)
+        .status(response.status)
+        .build();
     } catch (e: any) {
       const status = firstDefined(500, e.status);
 
@@ -26,7 +29,7 @@ export class HttpServiceAxios implements HttpService {
       // and no actual endpoint was hit.  Otherwise, we actually hit an endpoint and
       // the actual endpoint returned a 404 to us.
       const data =
-        e.status === 404 && e.response?.headers['content-type'] === 'text/html'
+        e.status === 404 && e.response?.headers["content-type"] === "text/html"
           ? { message: e.message }
           : { ...e.response?.data };
 
@@ -36,7 +39,9 @@ export class HttpServiceAxios implements HttpService {
       // we never should be showing stack traces as that is a big security risk.
       delete data.stack;
 
-      return Promise.reject(new HttpResponseBuilder().data(data).status(status).build());
+      return Promise.reject(
+        new HttpResponseBuilder().data(data).status(status).build(),
+      );
     }
   }
 }

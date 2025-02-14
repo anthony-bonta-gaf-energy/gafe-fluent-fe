@@ -23,12 +23,14 @@
     "build": "vite build"
   },
   "dependencies": {
-    "lodash-es": "^4.17.21"
+    "lodash-es": "^4.17.21",
+    "uuid": "^11.0.5"
   },
   "devDependencies": {
-    "typescript": "^5.7.2",
-    "vite": "^5.4.11",
-    "vitest": "^2.1.8",
+    "msw": "^2.7.0",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.0",
+    "vitest": "^3.0.5",
     "vitest-mock-extended": "^2.0.2"
   },
   "files": [

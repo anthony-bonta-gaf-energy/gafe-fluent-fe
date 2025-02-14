@@ -1,19 +1,20 @@
 // @vitest-environment node
-import { http, HttpResponse } from 'msw';
+import { http, HttpResponse } from "msw";
 
-import { uuid } from '../../utils/uuid/uuid';
-import { HttpRequestBuilder } from './http-request';
-import { createDefaultHttpService } from './http-service-axios';
-import { setupServer, SetupServerApi } from 'msw/node';
+import { setupServer, SetupServerApi } from "msw/node";
+import { v4 } from "uuid";
+import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
+import { HttpRequestBuilder } from "./http-request";
+import { createDefaultHttpService } from "./http-service-axios";
 
-describe('HttpServiceAxios', () => {
-  const domain = 'https://mock.gaf.energy';
-  const id = uuid();
-  const filter = 'qp';
-  const name = 'Bruce Wayne';
+describe("HttpServiceAxios", () => {
+  const domain = "https://mock.gaf.energy";
+  const id = v4();
+  const filter = "qp";
+  const name = "Bruce Wayne";
   const success = { id, name };
-  const noData = { message: 'Data not found' };
-  const failure = { message: 'Something went wrong' };
+  const noData = { message: "Data not found" };
+  const failure = { message: "Something went wrong" };
 
   let server: SetupServerApi;
 
@@ -26,11 +27,17 @@ describe('HttpServiceAxios', () => {
       http.get(`${domain}/api/success?filter=${filter}`, () =>
         HttpResponse.json(success, { status: 200 }),
       ),
-      http.get(`${domain}/api/success/${id}`, () => HttpResponse.json(success, { status: 200 })),
-      http.get(`${domain}/api/failure/client`, () => HttpResponse.json(noData, { status: 404 })),
-      http.get(`${domain}/api/failure/server`, () => HttpResponse.json(failure, { status: 500 })),
+      http.get(`${domain}/api/success/${id}`, () =>
+        HttpResponse.json(success, { status: 200 }),
+      ),
+      http.get(`${domain}/api/failure/client`, () =>
+        HttpResponse.json(noData, { status: 404 }),
+      ),
+      http.get(`${domain}/api/failure/server`, () =>
+        HttpResponse.json(failure, { status: 500 }),
+      ),
 
-      http.post(`${domain}/api/success`, async r => {
+      http.post(`${domain}/api/success`, async (r) => {
         const response = await r.request.json();
 
         return HttpResponse.json(response, { status: 201 });
@@ -51,8 +58,8 @@ describe('HttpServiceAxios', () => {
     server.close();
   });
 
-  describe('Success', () => {
-    it('should return a response with the data', async () => {
+  describe("Success", () => {
+    it("should return a response with the data", async () => {
       // Arrange.
       const url = `${domain}/api/success/${id}`;
       const request = new HttpRequestBuilder().get().url(url).build();
@@ -66,10 +73,14 @@ describe('HttpServiceAxios', () => {
       expect(actual).toEqual(success);
     });
 
-    it('should return a response with filtered data', async () => {
+    it("should return a response with filtered data", async () => {
       // Arrange.
       const url = `${domain}/api/success`;
-      const request = new HttpRequestBuilder().get().url(url).params({ filter }).build();
+      const request = new HttpRequestBuilder()
+        .get()
+        .url(url)
+        .params({ filter })
+        .build();
       const service = getService();
 
       // Act.
@@ -80,11 +91,14 @@ describe('HttpServiceAxios', () => {
       expect(actual).toEqual(success);
     });
 
-    it('should map the status code', async () => {
+    it("should map the status code", async () => {
       // Arrange.
       const url = `${domain}/api/success`;
       const expected = 201;
-      const request = new HttpRequestBuilder().post(JSON.stringify(success)).url(url).build();
+      const request = new HttpRequestBuilder()
+        .post(JSON.stringify(success))
+        .url(url)
+        .build();
       const service = getService();
 
       // Act.
@@ -95,9 +109,9 @@ describe('HttpServiceAxios', () => {
     });
   });
 
-  describe('Error', () => {
-    describe('Endpoint not found', () => {
-      it('should return a rejected promise if the endpoint cannot be hit', async () => {
+  describe("Error", () => {
+    describe("Endpoint not found", () => {
+      it("should return a rejected promise if the endpoint cannot be hit", async () => {
         // Arrange.
         const url = `${domain}/api/does-not-exist`;
         const request = new HttpRequestBuilder().get().url(url).build();
@@ -112,8 +126,8 @@ describe('HttpServiceAxios', () => {
       });
     });
 
-    describe('Client Error', () => {
-      it('should return a rejected promise with the data as the error if an error code is returned', async () => {
+    describe("Client Error", () => {
+      it("should return a rejected promise with the data as the error if an error code is returned", async () => {
         // Arrange.
         const url = `${domain}/api/failure/client`;
         const request = new HttpRequestBuilder().get().url(url).build();
@@ -128,8 +142,8 @@ describe('HttpServiceAxios', () => {
       });
     });
 
-    describe('Server Error', () => {
-      it('should return a rejected promise with the data as the error if an error code is returned', async () => {
+    describe("Server Error", () => {
+      it("should return a rejected promise with the data as the error if an error code is returned", async () => {
         // Arrange.
         const url = `${domain}/api/failure/server`;
         const request = new HttpRequestBuilder().get().url(url).build();
@@ -144,8 +158,8 @@ describe('HttpServiceAxios', () => {
       });
     });
 
-    describe('Internal Error', () => {
-      it('should return a rejected promise with the message of the error that occurred', async () => {
+    describe("Internal Error", () => {
+      it("should return a rejected promise with the message of the error that occurred", async () => {
         // Arrange.
         const url = `${domain}/api/failure/internal`;
         const request = new HttpRequestBuilder().get().url(url).build();
