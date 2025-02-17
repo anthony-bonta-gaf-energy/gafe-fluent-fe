@@ -1,6 +1,6 @@
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from "lodash-es";
 
-export type HttpMethod = 'delete' | 'get' | 'patch' | 'post' | 'put';
+export type HttpMethod = "delete" | "get" | "patch" | "post" | "put";
 export type HttpHeader = string[] | boolean | number | string | null;
 
 export interface HttpRequest {
@@ -16,8 +16,8 @@ export class HttpRequestBuilder {
 
   public constructor() {
     this.$request = {
-      method: 'get',
-      url: 'localhost',
+      method: "get",
+      url: "localhost",
       headers: {},
     };
   }
@@ -33,11 +33,11 @@ export class HttpRequestBuilder {
     return this;
   }
 
-  public delete = this.method.bind(this, 'delete', undefined);
-  public get = this.method.bind(this, 'get', undefined);
-  public patch = this.method.bind(this, 'patch');
-  public post = this.method.bind(this, 'post');
-  public put = this.method.bind(this, 'put');
+  public delete = this.method.bind(this, "delete", undefined);
+  public get = this.method.bind(this, "get", undefined);
+  public patch = this.method.bind(this, "patch");
+  public post = this.method.bind(this, "post");
+  public put = this.method.bind(this, "put");
 
   public url(endpoint: string): this {
     this.$request.url = endpoint;
@@ -56,15 +56,15 @@ export class HttpRequestBuilder {
   }
 
   public auth(bearer: string): this {
-    return this.header('Authorization', `Bearer ${bearer}`);
+    return this.header("Authorization", `Bearer ${bearer}`);
   }
 
   public contentType(type: string): this {
-    return this.header('Content-Type', type);
+    return this.header("Content-Type", type);
   }
 
   public accept(type: string): this {
-    return this.header('Accept', type);
+    return this.header("Accept", type);
   }
 
   public copy(other: HttpRequest) {

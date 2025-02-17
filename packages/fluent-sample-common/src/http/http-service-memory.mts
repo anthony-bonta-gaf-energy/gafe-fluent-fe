@@ -1,4 +1,4 @@
-import { get } from "lodash";
+import { get } from "lodash-es";
 
 import { firstDefined } from "../utils/first/first.mjs";
 import { HttpMethod, HttpRequest } from "./http-request.mjs";
