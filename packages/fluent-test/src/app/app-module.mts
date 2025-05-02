@@ -1,7 +1,7 @@
 import { Module } from "@nestjs/common";
-import { JobsModule } from "../jobs/jobs-module.mjs";
+import { RunModule } from "../run/run-module.mjs";
 
 @Module({
-  imports: [JobsModule],
+  imports: [RunModule],
 })
 export class AppModule {}
