@@ -1,14 +1,14 @@
 {
-  "name": "@anthony-bonta-gaf-energy/fluent-sample-api",
+  "name": "@anthony-bonta-gaf-energy/fluent-test",
   "version": "1.0.0",
-  "description": "An API backend for accessing fluent templates and creating pdfs",
+  "description": "A test application for the fluent api",
   "author": "GAF Energy",
   "license": "SEE LICENSE IN LICENSE",
   "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/anthony-bonta-gaf-energy",
-    "directory": "packages/fluent-sample-api"
+    "directory": "packages/fluent-test"
   },
   "main": "./dist/main.js",
   "scripts": {
@@ -18,18 +18,9 @@
   },
   "bin": "./bin/main.mjs",
   "dependencies": {
-    "@nestjs/common": "^11.0.9",
-    "@nestjs/core": "^11.0.9",
-    "@nestjs/platform-express": "^11.0.9",
-    "@nestjs/swagger": "^11.0.3",
-    "helmet": "^8.0.0",
-    "lodash-es": "^4.17.21",
-    "reflect-metadata": "^0.2.2",
-    "rxjs": "^7.8.1"
+    "lodash-es": "^4.17.21"
   },
   "devDependencies": {
-    "@nestjs/testing": "^11.0.9",
-    "supertest": "^7.0.0",
     "tsx": "^4.19.2",
     "typescript": "^5.7.3",
     "vitest": "^3.0.5",
