@@ -9,7 +9,7 @@ services:
     volumes:
       - .:/usr/dev
     working_dir: /usr/dev
-    command: "npm --workspace @anthony-bonta-gaf-energy/fluent-test debug"
+    command: "npm --workspace @anthony-bonta-gaf-energy/fluent-test run debug"
   fluent-manager-frontend:
     restart: always
     image: public.ecr.aws/apryse/fluent-manager-frontend:${FLUENT_MANAGER_VERSION}
