@@ -1,0 +1,17 @@
+{
+  "name": "@anthony-bonta-gaf-energy/fluent-resources",
+  "version": "1.0.0",
+  "description": "Contains resources to use for this demo",
+  "author": "GAF Energy",
+  "license": "UNLICENSED",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anthony-bonta-gaf-energy",
+    "directory": "packages/fluent-resources"
+  },
+  "files": [
+    "static"
+  ],
+  "sideEffects": false
+}
