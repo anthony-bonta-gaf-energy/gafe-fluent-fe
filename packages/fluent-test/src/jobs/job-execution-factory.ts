@@ -12,12 +12,12 @@ export interface IJobExecutionFactory {
 
 @Injectable()
 export class JobExecutionFactory implements IJobExecutionFactory {
-  private static readonly mapper: Record<JobName, IJobExecution> = {
+  private static readonly Mapper: Record<JobName, IJobExecution> = {
     [JobName.DoNothing]: new JobExecutionDoNothing(),
     [JobName.GenerateIdentityPdf]: new JobExecutionGenerateIdentityPdf(),
   };
 
   public get(name: JobName): Promise<IJobExecution> {
-    return Promise.resolve(JobExecutionFactory[name]);
+    return Promise.resolve(JobExecutionFactory.Mapper[name]);
   }
 }

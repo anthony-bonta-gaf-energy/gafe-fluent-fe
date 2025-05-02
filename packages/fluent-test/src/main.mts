@@ -1,3 +1,4 @@
+import { ValidationPipe } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import { AppModule } from "./app/app-module.mjs";
@@ -5,6 +6,7 @@ import { AppModule } from "./app/app-module.mjs";
 (async function () {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix("api");
+  app.useGlobalPipes(new ValidationPipe());
 
   const config = new DocumentBuilder()
     .setTitle("Fluent Test")

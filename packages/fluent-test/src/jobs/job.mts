@@ -1,3 +1,4 @@
+import { v4 } from "uuid";
 import { JobDtoCreate } from "./job-dto-create.mjs";
 
 export enum JobName {
@@ -21,6 +22,11 @@ export class JobBuilder {
     };
   }
 
+  public id(id = v4()) {
+    this._job.id = id;
+    return this;
+  }
+
   public name(name: JobName) {
     this._job.name = name;
 
@@ -30,6 +36,11 @@ export class JobBuilder {
   public context(context: any) {
     this._job.context = context;
 
+    return this;
+  }
+
+  public copy(other: Job) {
+    this._job = structuredClone(other);
     return this;
   }
 
