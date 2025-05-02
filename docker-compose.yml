@@ -1,40 +1,36 @@
 services:
-  frontend:
-    container_name: fluent-manager-frontend
+  fluent-manager-frontend:
     restart: always
     image: public.ecr.aws/apryse/fluent-manager-frontend:${FLUENT_MANAGER_VERSION}
     env_file: .env
-    ports: ["80:8080"]
-    depends_on: [backend]
-    logging:
-      driver: json-file
-      options: { max-size: 50m, max-file: "3" }
-  backend:
-    container_name: fluent-manager-backend
+    ports:
+      - 8080:8080
+    depends_on:
+      - fluent-manager-backend
+  fluent-manager-backend:
+    hostname: backend
     restart: always
     image: public.ecr.aws/apryse/fluent-manager-backend:${FLUENT_MANAGER_VERSION}
     env_file: .env
-    depends_on: [db]
-    logging:
-      driver: json-file
-      options: { max-size: 50m, max-file: "3" }
-  db:
-    container_name: fluent-manager-db
+    depends_on:
+      - fluent-manager-db
+      - fluent-engine
+  fluent-manager-db:
     restart: always
     image: public.ecr.aws/apryse/fluent-manager-db:${FLUENT_MANAGER_VERSION}
-    volumes: ["fluent-manager-db:/var/lib/postgresql/data"]
+    volumes:
+      - fluent-manager-db:/var/lib/postgresql/data
     env_file: .env
-    logging:
-      driver: json-file
-      options: { max-size: 50m, max-file: "3" }
-  engine:
-    container_name: fluent-engine
+  fluent-engine:
     restart: always
     image: public.ecr.aws/apryse/fluent-restful:${FLUENT_ENGINE_VERSION}
+    volumes:
+      - fluent-engine-fs:/usr/local/tomcat/webapps/App_Data
     ports:
-      - 8080:8080
+      - 8081:8080
     env_file: .env
 volumes:
+  fluent-engine-fs: { name: fluent-engine-fs }
   fluent-manager-db: { name: fluent-manager-db }
 networks:
   default: { name: fluent-manager-network }
