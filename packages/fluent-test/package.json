@@ -10,32 +10,14 @@
     "url": "https://github.com/anthony-bonta-gaf-energy",
     "directory": "packages/fluent-test"
   },
-  "main": "./dist/main.js",
   "scripts": {
-    "build": "tsc -p tsconfig.prod.json",
-    "debug": "tsx watch --inspect=0.0.0.0:9229 ./src/main.mts",
     "start": "node ./bin/main.mjs"
   },
-  "bin": "./bin/main.mjs",
+  "bin": ".bin/main.mjs",
   "dependencies": {
-    "@nestjs/axios": "^4.0.0",
-    "@nestjs/common": "^11.1.0",
-    "@nestjs/core": "^11.1.0",
-    "@nestjs/platform-express": "^11.1.0",
-    "@nestjs/swagger": "^11.1.6",
-    "@nestjs/throttler": "^6.4.0",
-    "class-transformer": "^0.5.1",
-    "class-validator": "^0.14.2",
-    "lodash-es": "^4.17.21",
-    "reflect-metadata": "^0.2.2",
-    "rxjs": "^7.8.2",
-    "uuid": "^11.1.0"
-  },
-  "devDependencies": {
-    "tsx": "^4.19.4",
-    "typescript": "^5.8.3",
-    "vitest": "^3.1.2",
-    "vitest-mock-extended": "^3.1.0"
+    "axios": "^1.9.0",
+    "dotenv": "^16.5.0",
+    "lodash-es": "^4.17.21"
   },
   "files": [
     "dist"

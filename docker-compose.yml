@@ -1,15 +1,4 @@
 services:
-  fluent-test:
-    restart: always
-    image: node:lts
-    env_file: .env
-    ports:
-      - 3000:3000
-      - 9229:9229
-    volumes:
-      - .:/usr/dev
-    working_dir: /usr/dev
-    command: "npm --workspace @anthony-bonta-gaf-energy/fluent-test run debug"
   fluent-manager-frontend:
     restart: always
     image: public.ecr.aws/apryse/fluent-manager-frontend:${FLUENT_MANAGER_VERSION}
@@ -23,6 +12,8 @@ services:
     restart: always
     image: public.ecr.aws/apryse/fluent-manager-backend:${FLUENT_MANAGER_VERSION}
     env_file: .env
+    ports:
+      - 8079:8080
     depends_on:
       - fluent-manager-db
       - fluent-engine

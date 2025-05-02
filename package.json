@@ -11,24 +11,13 @@
   ],
   "scripts": {
     "clean": "rimraf --glob 'dist' 'reports' '*.tgz' '*.log' 'packages/**/dist' 'packages/**/docs' 'packages/**/*.tgz' 'packages/**/*.log'",
-    "check": "tsc",
-    "test": "vitest --run --coverage",
     "build": "lerna run build",
     "make": "yarn clean && yarn check && yarn test && yarn build"
   },
   "devDependencies": {
-    "@types/lodash-es": "^4.17.12",
-    "@vitest/coverage-istanbul": "^3.1.2",
     "lerna": "^8.2.2",
     "prettier": "^3.5.3",
-    "rimraf": "^6.0.1",
-    "typescript": "^5.8.3",
-    "vite": "^6.3.4",
-    "vite-plugin-checker": "^0.9.1",
-    "vite-plugin-dts": "^4.5.3",
-    "vite-plugin-external": "^6.2.1",
-    "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^3.1.2"
+    "rimraf": "^6.0.1"
   },
   "resolutions": {
     "rollup": "npm:@rollup/wasm-node@*"
