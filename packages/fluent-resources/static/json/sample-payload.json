@@ -1,0 +1,18 @@
+{
+  "homeowner": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john.doe@email.fake",
+    "phone": "214-555-2134",
+    "street": "127 Home Rd",
+    "city": "Springfield",
+    "state": "CA",
+    "zip": "94223"
+  },
+  "salesRep": {
+    "firstName": "Jane",
+    "lastName": "Smith",
+    "email": "jane.smith@gaf.energy",
+    "phone": "214-555-1126"
+  }
+}

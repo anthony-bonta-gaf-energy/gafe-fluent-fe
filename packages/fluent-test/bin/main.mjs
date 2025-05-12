@@ -1,12 +1,16 @@
 import axios from "axios";
 import { config } from "dotenv";
-import { mkdir, writeFile } from "node:fs/promises";
-import { resolve } from "node:path";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { dirname, resolve } from "node:path";
 import { cwd } from "node:process";
+import { fileURLToPath } from "node:url";
 
 const { parsed: env } = config({
   path: [".env.local", ".env"],
 });
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 async function getSampleTemplate() {
   const manager = "http://localhost:8079";
@@ -44,7 +48,17 @@ async function getSampleTemplate() {
 async function generateDocument(template) {
   const engine = "http://localhost:8081";
   const ConnectionString = `file://resources/${template.name}`;
-  const Data = Buffer.from(JSON.stringify({})).toString("base64");
+  const payloadPath = resolve(
+    __dirname,
+    "../..",
+    "fluent-resources",
+    "static",
+    "json",
+    "sample-payload.json",
+  );
+  const content = await readFile(payloadPath);
+  const payload = JSON.parse(content.toString());
+  const Data = Buffer.from(JSON.stringify(payload)).toString("base64");
   const Datasources = [{ Type: "json", Data }];
   const body = { OutputFormat: "pdf", ConnectionString, Datasources };
   const { FLUENT_ENGINE_LICENSE: license } = env;
