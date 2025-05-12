@@ -60,5 +60,7 @@ docker compose down
 # Make sure to run docker compose up first in a different terminal or
 # Run docker compose up -d in the same terminal
 # The fluent manager and engine must be running for this to work.
+# Before you run this, you will also want to upload 1 template as the
+# actual test will just use the first template it finds
 yarn workspace @anthony-bonta-gaf-energy/fluent-test start
 ```
