@@ -53,3 +53,12 @@ When you're ready to stop the instance.
 ```sh
 docker compose down
 ```
+
+## Run the Sample App
+
+```sh
+# Make sure to run docker compose up first in a different terminal or
+# Run docker compose up -d in the same terminal
+# The fluent manager and engine must be running for this to work.
+yarn workspace @anthony-bonta-gaf-energy/fluent-test start
+```
