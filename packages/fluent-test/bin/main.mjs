@@ -2,15 +2,17 @@ import axios from "axios";
 import { config } from "dotenv";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
-import { cwd } from "node:process";
 import { fileURLToPath } from "node:url";
-
-const { parsed: env } = config({
-  path: [".env.local", ".env"],
-});
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+const { parsed: env } = config({
+  path: [
+    resolve(__dirname, "../../../", ".env.local"),
+    resolve(__dirname, "../../../", ".env"),
+  ],
+});
 
 async function getSampleTemplate() {
   const manager = "http://localhost:8079";
@@ -59,7 +61,7 @@ async function generateDocument(template) {
   const content = await readFile(payloadPath);
   const payload = JSON.parse(content.toString());
   const Data = Buffer.from(JSON.stringify(payload)).toString("base64");
-  const Datasources = [{ Type: "json", Data }];
+  const Datasources = [{ Type: "json", Data, Name: "JSON" }];
   const body = { OutputFormat: "pdf", ConnectionString, Datasources };
   const { FLUENT_ENGINE_LICENSE: license } = env;
 
@@ -106,7 +108,7 @@ async function generateDocument(template) {
 async function writeDocument(document) {
   const { Data: encoded } = document;
   const raw = Buffer.from(encoded, "base64");
-  const directory = resolve(cwd(), "dist/documents");
+  const directory = resolve(__dirname, "..", "dist/documents");
   const output = resolve(directory, `${document.Guid}.pdf`);
 
   console.log(`Writing ${document.Guid} to ${output}`);
@@ -121,4 +123,5 @@ async function run() {
   await writeDocument(document);
 }
 
+console.log(`Running out of ${__dirname}`);
 run().catch((e) => console.error(e));
