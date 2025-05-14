@@ -81,14 +81,14 @@ async function generateDocument(template) {
   console.log(`Generated document, ${generated.Guid}`);
   console.log("Waiting for document to finish processing");
 
-  // For some reason, the engine and manager aren't always in sync here - I would normally
-  // just do several retries with sleeps inbetween -> for this sample app, this will
-  // suffice.
-  await new Promise((resolve) => setTimeout(resolve, 3000));
-
   let status = 100;
 
   do {
+    // For some reason, the engine and manager aren't always in sync here - I would normally
+    // just do several retries with sleeps inbetween -> for this sample app, this will
+    // suffice.
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
     const statusEndpoint = `${engine}/v2/document/${generated.Guid}/status`;
     const current = await axios
       .get(statusEndpoint, { maxRedirects: 0, headers })
