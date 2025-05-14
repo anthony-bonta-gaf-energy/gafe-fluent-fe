@@ -25,7 +25,9 @@ services:
     env_file: .env
   fluent-engine:
     restart: always
-    image: public.ecr.aws/apryse/fluent-restful:${FLUENT_ENGINE_VERSION}
+    build:
+      context: .
+      dockerfile: fluent-engine.dockerfile
     volumes:
       - fluent-engine-fs:/usr/local/tomcat/webapps/App_Data
     ports:

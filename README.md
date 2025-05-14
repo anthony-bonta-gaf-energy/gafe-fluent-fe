@@ -41,7 +41,7 @@ If you get an output, then you are ready for the next step.
 
 ```sh
 yarn install
-docker compose up
+docker compose up --build
 
 # Navigate to localhost in your web browser and use credentials
 # Username: admin@fake.email
