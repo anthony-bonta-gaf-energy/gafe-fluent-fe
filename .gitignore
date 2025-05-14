@@ -128,3 +128,6 @@ dist
 
 # OS Turds
 .DS_Store
+
+# Office Turds
+~$*
